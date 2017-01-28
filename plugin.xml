@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-iosrtc-capturestill"
+        version="0.1.0">
+
+  <name>iOSRTCCaptureStill</name>
+  <description>Extension for iosrtc to capture still images from user media contained in UIView in iOS</description>
+  <license>Apache 2.0 License</license>
+  <keywords>cordova,uiview,ios,iosrtc,getusermedia,dataurl</keywords>
+  <engines>
+    <engine name="cordova-ios" version=">=3.8.0" />
+  </engines>
+
+  <platform name="ios">
+    <js-module src="dist/iosrtc-capturestill.js" name="iOSRTCCaptureStill">
+      <merges  target="cordova.plugins.iosrtc" />
+    </js-module>
+
+    <source-file src="src/ios/iosrtcCaptureStill.swift" />
+  </platform>
+</plugin>
