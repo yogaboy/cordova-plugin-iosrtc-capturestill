@@ -12,7 +12,7 @@ extension PluginMediaStreamRenderer {
 		self.elementView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
 		let image = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
-		var imageData : UIImage = UIImageJPEGRepresentation(image)
+		let imageData : NSData = UIImageJPEGRepresentation(image!, 0.8)!
 		let strBase64 : String = imageData.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
 		return strBase64
     }
@@ -20,12 +20,11 @@ extension PluginMediaStreamRenderer {
 
 extension iosrtcPlugin {
 	func captureStillAsURI(id : Int) -> String {
-		if (self.pluginMediaStreamRenderers[id])
 		let pluginMediaStreamRenderer = self.pluginMediaStreamRenderers[id]
 		if pluginMediaStreamRenderer == nil {
 			NSLog("iosrtcPlugin#captureStillAsURI() | ERROR: pluginMediaStreamRenderer with id=%@ does not exist", String(id))
-			return
+			return ""
 		}
-		return self.pluginMediaStreamRenderers[id].getStillURI()
+		return self.pluginMediaStreamRenderers[id]!.getStillURI()
 	}
 }
